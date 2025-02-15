@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Union Dental Clinic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Source+Serif+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #004d99;
+            --secondary-color: #00a0dc;
+            --accent-color: #0099cc;
+            --text-color: #222;
+            --light-bg: #f9f9fc;
+            --dark-bg: #2d2d2d;
+            --box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+   .language-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .language-switch a {
+            background: white;
+            color: var(--primary-color);
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .language-switch a:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        header {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3.8em;
+            font-family: 'Source Serif Pro', serif;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.5em;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        .service-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px auto;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--box-shadow);
+            padding: 35px;
+            text-align: center;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            border-color: var(--secondary-color);
+        }
+
+        .service-card h3 {
+            font-size: 2.2em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card p {
+            font-size: 1.1em;
+            color: var(--text-color);
+            margin-bottom: 25px;
+        }
+
+        .service-card i {
+            font-size: 3.5em;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .service-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 80%;
+            height: 6px;
+            background: var(--secondary-color);
+            transform: translateX(-50%);
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: var(--dark-bg);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+
+        footer a {
+            color: var(--secondary-color);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.8em;
+            }
+
+            .service-container {
+                margin-top: 30px;
+            }
+
+            .service-card {
+                padding: 30px;
+            }
+
+            footer p {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="language-switch">
+  <a href="/serviceamh.html">አማርኛ</a>
+</div>
+<header>
+    <h1>Our Premium Dental Services</h1>
+    <p>High-quality care and personalized treatment for a confident smile.</p>
+</header>
+
+<div class="service-container">
+    <div class="service-card">
+        <i class="fas fa-align-left"></i>
+        <h3>Orthodontic Treatment</h3>
+        <p>Correct teeth alignment and jaw irregularities with cutting-edge orthodontic techniques for a perfect smile.</p>
+    </div>
+
+    <div class="service-card">
+        <i class="fas fa-brush"></i>
+        <h3>Cosmetic Dentistry</h3>
+        <p>Enhance your smile with expert cosmetic treatments that combine beauty and health, providing lasting results.</p>
+    </div>
+
+    <div class="service-card">
+        <i class="fas fa-stethoscope"></i>
+        <h3>Preventive Care</h3>
+        <p>Focus on preventing dental issues through early detection, proper hygiene, and regular check-ups.</p>
+    </div>
+
+    <div class="service-card">
+        <i class="fas fa-tooth"></i>
+        <h3>Advanced Dental Surgery</h3>
+        <p>Specialized in complex dental procedures, from implants to oral surgery, performed with the utmost precision and care.</p>
+    </div>
+
+    <div class="service-card">
+        <i class="fas fa-users"></i>
+        <h3>General Dentistry</h3>
+        <p>Providing comprehensive dental care for all ages, from regular check-ups to treatments ensuring lifelong oral health.</p>
+    </div>
+
+    <div class="service-card">
+        <i class="fas fa-star"></i>
+        <h3>And Many More...</h3>
+        <p>Explore a wide range of additional services, tailored to meet all of your dental care needs.</p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Union Dental Clinic. All rights reserved. <br> For more information, <a href="/contact.html">contact us</a> today.</p>
+</footer>
+
+<!-- Add Font Awesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+</body>
+</html>

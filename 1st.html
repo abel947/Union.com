@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Union Dental Clinic</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #003366;
+            --secondary-color: #0078d7;
+            --accent-color: #00a0dc;
+            --text-color: #333;
+            --light-bg: #f5f8fc;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--light-bg), #ffffff);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .language-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1100;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 20px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .language-selector label {
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .language-selector select {
+            padding: 8px 15px;
+            border: 2px solid var(--secondary-color);
+            border-radius: 20px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .language-selector select:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            justify-content: center;
+        }
+
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 50px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .location-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1.2em;
+            color: var(--secondary-color);
+            margin: 20px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .location-info:hover {
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .location-info i {
+            font-size: 1.4em;
+        }
+
+        .button-container {
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .main-button {
+            padding: 15px 40px;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0, 120, 215, 0.2);
+        }
+
+        .main-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 120, 215, 0.3);
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+        }
+
+        .decoration {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--secondary-color), transparent);
+            opacity: 0.1;
+            filter: blur(40px);
+            z-index: -1;
+        }
+
+        .decoration:nth-child(1) {
+            top: 10%;
+            left: 10%;
+        }
+
+        .decoration:nth-child(2) {
+            bottom: 10%;
+            right: 10%;
+            background: linear-gradient(225deg, var(--accent-color), transparent);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .button-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .main-button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="decoration"></div>
+    <div class="decoration"></div>
+
+    <div class="language-selector">
+        <label for="language-selection">Language / ቋንቋ:</label>
+        <select id="language-selection" onchange="updateContent()">
+            <option value="en">English</option>
+            <option value="am">አማርኛ</option>
+        </select>
+    </div>
+
+    <div class="container">
+        <div class="welcome-section">
+            <h1 id="greeting">Welcome to Union Dental Clinic</h1>
+            
+            <div class="location-info" onclick="openLocation()">
+                <i class="fas fa-map-marker-alt"></i>
+                <span id="location-description">Megenagna, 100 meters behind Panorama Hotel</span>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button onclick="redirect()" class="main-button">
+                <i class="fas fa-arrow-right"></i> Enter
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function updateContent() {
+            const selectedLanguage = document.getElementById('language-selection').value;
+            const greeting = document.getElementById('greeting');
+            const locationDescription = document.getElementById('location-description');
+
+            if (selectedLanguage === 'am') {
+                greeting.innerHTML = 'እንኳን ደህና መጡ ወደ ዩኒየን ዴንታል ክሊኒክ';
+                locationDescription.innerHTML = 'መገናኛ፣ ከፓኖራማ ሆቴል ጀርባ 100 ሜትር ገባ ብሎ ';
+            } else {
+                greeting.innerHTML = 'Welcome to Union Dental Clinic';
+                locationDescription.innerHTML = 'Megenagna, 100 meters behind Panorama Hotel';
+            }
+        }
+
+        function openLocation() {
+            window.open("https://maps.app.goo.gl/qLtZRX3Rmde8s2Fb8", "_blank");
+        }
+
+        function redirect() {
+            const selectedLanguage = document.getElementById('language-selection').value;
+            if (selectedLanguage === 'am') {
+                window.location.href = 'entryamharic.html';
+            } else {
+                window.location.href = 'entryenglish.html';
+            }
+        }
+
+        // Add smooth scroll reveal animation for elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.welcome-section, .button-container');
+            elements.forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    element.style.transition = 'all 0.8s ease';
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+    </script>
+</body>
+</html>

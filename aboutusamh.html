@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ስለኛ - ዩኒየን የጥርስ ህክምና ክሊኒክ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Same CSS as before */
+        /* ሁሉም CSS ኮዶች እንደበፊቱ ነው */
+        :root {
+            --primary-color: #003366;
+            --secondary-color: #0078d7;
+            --accent-color: #00a0dc;
+            --text-color: #333;
+            --light-bg: #f5f8fc;
+            --transition: all 0.3s ease;
+        }
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80') center/cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        header .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header h1 {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: -60px auto 40px;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .content-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-bottom: 30px;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideIn 0.6s ease forwards;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--secondary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: var(--light-bg);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5em;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: var(--light-bg);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-icon {
+            font-size: 1.5em;
+            color: var(--secondary-color);
+        }
+
+        .contact-text {
+            flex: 1;
+        }
+
+        .contact-text h3 {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .contact-text p, .contact-text a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-text a:hover {
+            color: var(--secondary-color);
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 60px 20px;
+            }
+
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            .section-title {
+                font-size: 1.8em;
+            }
+
+            .content-card {
+                padding: 30px;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>ስለ ዩኒየን የጥርስ ህክምና ክሊኒክ</h1>
+            <p>ፈጣን ፀጉር መለወጥ፣ ሕይወትን ማሻሻል</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="content-card" style="animation-delay: 0.2s;">
+            <h2 class="section-title">የእኛ ታሪክ</h2>
+            <p>ዩኒየን የጥርስ ህክምና ክሊኒክ በከተማዋ መሃል የሚገኝ ከፍተኛ ደረጃ ያለው የጥርስ ህክምና አገልግሎት የሚሰጥ ተቋም ነው። ለህክምና የምንሰጠው ቁርጠኝነት እና ለታካሚዎች የምናደርገው እንክብካቤ በመርጃችን የሚያስገኘው ውጤት የዓመታት ልምድ አለው። ዘመናዊ ቴክኖሎጂ እና ሰለጠነ እንክብካቤ በማዋሃድ ከፍተኛ ደረጃ ያለው የጥርስ ህክምና እንሰጣለን።</p>
+        </div>
+
+        <div class="content-card" style="animation-delay: 0.4s;">
+            <h2 class="section-title">የእኛ ራእይ</h2>
+            <p>ሁሉም ዕድሜ ያላቸው ታካሚዎች የተከበሩ እና በሚያገኙት ህክምና በመተማመን እንዲኖሩ ማድረግ የእኛ አላማ ነው። የጥርስ ጤና በማሻሻል እና ፅኑ ፀጉሮችን በማምረት የህይወት ጥራት ለማሻሻል እንሰራለን።</p>
+        </div>
+
+        <div class="content-card" style="animation-delay: 0.6s;">
+            <h2 class="section-title">ለምን እንመርጣቸው?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-user-md feature-icon"></i>
+                    <h3>ብቃት ያላቸው ባለሙያዎች</h3>
+                    <p>ብቁ እና በልምድ የተራቀቁ የጥርስ ሐኪሞች</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-tooth feature-icon"></i>
+                    <h3>ዘመናዊ መሣሪያ</h3>
+                    <p>ዘመናዊ ቴክኖሎጂ እና ሙሉ ለሙሉ የተስተካከለ መዋቅር</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-clipboard-list feature-icon"></i>
+                    <h3>ሙሉ ህክምና</h3>
+                    <p>ከመከላከያ ህክምና እስከ ውስብስብ ቀዶ ህክምና ድረስ</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-map-marker-alt feature-icon"></i>
+                    <h3>ምቹ ቦታ</h3>
+                    <p>በከተማዋ መሃል በቀላሉ ሊደረስበት የሚችል ቦታ</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card" style="animation-delay: 0.8s;">
+            <h2 class="section-title">አግኙን</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt contact-icon"></i>
+                    <div class="contact-text">
+                        <h3>አድራሻ</h3>
+                        <a href="https://maps.app.goo.gl/Yz4Hi38kEUWWAa2B8" target="_blank">ቦታውን ለማየት ይጫኑ</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone contact-icon"></i>
+                    <div class="contact-text">
+                        <h3>ስልክ</h3>
+                        <p>0910720480</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <div class="contact-text">
+                        <h3>ኢሜይል</h3>
+                        <a href="uniondentalclinic@gmail.com">uniondentalclinic@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 ዩኒየን የጥርስ ህክምና ክሊኒክ. ሁሉም መብቶች የተጠበቁ ናቸው.</p>
+    </footer>
+</body>
+</html>

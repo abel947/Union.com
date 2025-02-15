@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Union Dental Clinic - Admin Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #003366;
+            --secondary-color: #0078d7;
+            --accent-color: #00a0dc;
+            --text-color: #333;
+            --light-bg: #f5f8fc;
+            --error-color: #dc3545;
+            --success-color: #28a745;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            background: linear-gradient(135deg, rgba(0, 51, 102, 0.95), rgba(0, 120, 215, 0.9)), 
+                        url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .page-container {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            width: 100%;
+            max-width: 450px;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            animation: slideIn 0.6s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .login-header h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .login-header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--secondary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .login-header p {
+            color: #666;
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 2px solid #e1e1e1;
+            border-radius: 12px;
+            font-size: 1em;
+            transition: var(--transition);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 47px;
+            color: #999;
+            transition: var(--transition);
+        }
+
+        .input-group input:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(0, 120, 215, 0.1);
+            outline: none;
+        }
+
+        .input-group input:focus + i {
+            color: var(--secondary-color);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0, 120, 215, 0.2);
+        }
+
+        .login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 120, 215, 0.3);
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.9em;
+            margin-top: 15px;
+            text-align: center;
+            display: none;
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                padding: 30px 20px;
+            }
+
+            .login-header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <div class="login-container">
+            <div class="login-header">
+                <h1>Admin Login</h1>
+                <p>Welcome back! Please login to access the dashboard</p>
+            </div>
+            
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="username">Email Address</label>
+                    <input 
+                        type="email" 
+                        id="username" 
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                        required
+                    >
+                    <i class="fas fa-envelope"></i>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+                    <i class="fas fa-lock"></i>
+                </div>
+
+                <button type="submit" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+
+                <div class="error-message" id="error-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('login-form');
+        const errorMessage = document.getElementById('error-message');
+
+        // Correct credentials
+        const correctUsername = "shiferawdegu@gmail.com";
+        const correctPassword = "shiferaw1957";
+
+        // Event listener for login form submission
+        loginForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            // Get input values
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            // Check credentials
+            if (username === correctUsername && password === correctPassword) {
+                // Show success state on button
+                const loginBtn = document.querySelector('.login-btn');
+                loginBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Logging in...';
+                loginBtn.style.backgroundColor = 'var(--success-color)';
+                
+                // Hide any previous error message
+                errorMessage.style.display = 'none';
+
+                // Redirect after a short delay
+                setTimeout(() => {
+                    window.location.href = "signin1.html";
+                }, 1000);
+            } else {
+                // Show error message with animation
+                errorMessage.textContent = "Invalid email or password. Please try again.";
+                errorMessage.style.display = 'block';
+                errorMessage.style.animation = 'none';
+                errorMessage.offsetHeight; // Trigger reflow
+                errorMessage.style.animation = 'shake 0.5s ease';
+
+                // Highlight inputs in red
+                const inputs = document.querySelectorAll('input');
+                inputs.forEach(input => {
+                    input.style.borderColor = 'var(--error-color)';
+                    setTimeout(() => {
+                        input.style.borderColor = '#e1e1e1';
+                    }, 2000);
+                });
+            }
+        });
+
+        // Remove error states on input
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', () => {
+                input.style.borderColor = '#e1e1e1';
+                errorMessage.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

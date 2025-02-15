@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ቀጠሮ ማረጋገጫ - ዩኒየን የጥርስ ክሊኒክ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #003366;
+            --secondary-color: #0078d7;
+            --accent-color: #00a0dc;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --text-color: #333;
+            --light-bg: #f5f8fc;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--light-bg), #ffffff);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            padding: 40px;
+            animation: slideIn 0.6s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--secondary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .section {
+            background: var(--light-bg);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section h3 {
+            color: var(--primary-color);
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h3 i {
+            color: var(--secondary-color);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .info-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .info-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-item strong {
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        .info-item span {
+            color: var(--text-color);
+            font-size: 1.1em;
+        }
+
+        .status-message {
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .status-success {
+            background: rgba(40, 167, 69, 0.1);
+            color: var(--success-color);
+            border: 1px solid rgba(40, 167, 69, 0.2);
+        }
+
+        .suggestion {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .suggestion h3 {
+            color: var(--primary-color);
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+
+        .suggestion p {
+            margin: 10px 0;
+            padding: 10px;
+            background: var(--light-bg);
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .suggestion p:hover {
+            transform: translateX(5px);
+            background: rgba(0, 120, 215, 0.1);
+        }
+
+        .back-button {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-button a {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 120, 215, 0.2);
+        }
+
+        .back-button a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 120, 215, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ቀጠሮ ማረጋገጫ</h1>
+
+        <div class="section" style="animation-delay: 0.1s;">
+            <h3><i class="fas fa-user-circle"></i> የእርስዎ መረጃ</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <strong>ሙሉ ስም</strong>
+                    <span id="name"></span>
+                </div>
+                <div class="info-item">
+                    <strong>ፆታ</strong>
+                    <span id="gender"></span>
+                </div>
+                <div class="info-item">
+                    <strong>እድሜ</strong>
+                    <span id="age"></span>
+                </div>
+                <div class="info-item">
+                    <strong>ስልክ ቁጥር</strong>
+                    <span id="contact"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" style="animation-delay: 0.2s;">
+            <h3><i class="fas fa-calendar-alt"></i> የቀጠሮ ዝርዝሮች</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <strong>ቀን</strong>
+                    <span id="appointmentDate"></span>
+                </div>
+                <div class="info-item">
+                    <strong>ሰዓት</strong>
+                    <span id="appointmentTime"></span>
+                </div>
+                <div class="info-item">
+                    <strong>የመረጡት ሐኪም</strong>
+                    <span id="doctor"></span>
+                </div>
+                <div class="info-item">
+                    <strong>የሕመም ምልክቶች</strong>
+                    <span id="symptoms"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" style="animation-delay: 0.3s;">
+            <h3><i class="fas fa-info-circle"></i> ሁኔታ</h3>
+            <div id="appointmentStatus" class="status-message status-success">
+                ቀጠሮዎ በተሳካ ሁኔታ ተመዝግቧል። እባኮትን በተክክለኛው ቀን እና ሰዓት ይገኙ ።
+            </div>
+            <div class="suggestion">
+                <h3><i class="fas fa-lightbulb"></i> አስፈላጊ ማስታወሻዎች</h3>
+                <p><i class="fas fa-clock"></i> በተወሰነው ቀን እና ሰዓት ይምጡ</p>
+                <p><i class="fas fa-file-medical"></i> የሕክምና ማስረጃዎችን ያምጡ</p>
+                <p><i class="fas fa-phone"></i> ቀጠሮውን ማስተካከል ከፈለጉ በ 0978563412 ይደውሉ።</p>
+            </div>
+        </div>
+
+        <div class="back-button">
+            <a href="1st.html"><i class="fas fa-home"></i> ወደ መነሻ ገፅ ተመለስ</a>
+        </div>
+    </div>
+
+    <script>
+        const appointments = JSON.parse(localStorage.getItem('appointments')) || [];
+
+        if (appointments.length === 0) {
+            alert('በትክክል የተመዘገበ ቀጠሮ የለም።');
+            window.location.href = '1st.html';
+        } else {
+            const appointment = appointments[appointments.length - 1];
+
+            document.getElementById('name').textContent = appointment.name || 'የለም';
+            document.getElementById('gender').textContent = appointment.gender || 'የለም';
+            document.getElementById('age').textContent = appointment.age || 'የለም';
+            document.getElementById('contact').textContent = appointment.contact || 'የለም';
+            document.getElementById('symptoms').textContent = appointment.symptoms || 'የለም';
+            document.getElementById('appointmentDate').textContent = new Date(appointment['appointment-date']).toDateString() || 'የለም';
+            document.getElementById('appointmentTime').textContent = appointment['appointment-time'] || 'የለም';
+            document.getElementById('doctor').textContent = appointment.doctor || 'ማንኛውም የተገኘ ሐኪም';
+        }
+    </script>
+</body>
+</html>
